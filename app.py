@@ -92,7 +92,7 @@ hr {
 }
 </style>
 """, unsafe_allow_html=True)
-DB_PASSWORD = "Parth123g"
+DB_PASSWORD = ""
 def get_conn():
     if "mysql" in st.secrets:
         return mysql.connector.connect(
