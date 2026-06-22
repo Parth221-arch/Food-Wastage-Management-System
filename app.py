@@ -94,10 +94,20 @@ hr {
 """, unsafe_allow_html=True)
 DB_PASSWORD = "Parth123g"
 def get_conn():
-    return mysql.connector.connect(
-        host="localhost", user="root",
-        password=DB_PASSWORD, database="food_wastage"
-    )
+    if "mysql" in st.secrets:
+        return mysql.connector.connect(
+            host=st.secrets["mysql"]["host"],
+            port=st.secrets["mysql"]["port"],
+            user=st.secrets["mysql"]["user"],
+            password=st.secrets["mysql"]["password"],
+            database=st.secrets["mysql"]["database"],
+            ssl_disabled=False
+        )
+    else:
+        return mysql.connector.connect(
+            host="localhost", user="root",
+            password=DB_PASSWORD, database="food_wastage"
+        )
 def run_query(sql):
     try:
         conn = get_conn()
