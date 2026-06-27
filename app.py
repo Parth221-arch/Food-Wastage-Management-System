@@ -102,6 +102,8 @@ def get_conn():
             password=st.secrets["mysql"]["password"],
             database=st.secrets["mysql"]["database"],
             ssl_disabled=False
+            ssl_verify_cert=False,
+            ssl_verify_identity=False
         )
     else:
         return mysql.connector.connect(
