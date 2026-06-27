@@ -101,7 +101,7 @@ def get_conn():
             user=st.secrets["mysql"]["user"],
             password=st.secrets["mysql"]["password"],
             database=st.secrets["mysql"]["database"],
-            ssl_disabled=False
+            ssl_disabled=False,
             ssl_verify_cert=False,
             ssl_verify_identity=False
         )
